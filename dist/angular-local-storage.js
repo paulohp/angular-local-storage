@@ -1,6 +1,6 @@
 /**
  * An Angular module that gives you access to the browsers local storage
- * @version v0.2.2 - 2015-05-29
+ * @version v0.2.2 - 2015-07-09
  * @link https://github.com/grevory/angular-local-storage
  * @author grevory <greg@gregpike.ca>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -19,7 +19,9 @@ var isDefined = angular.isDefined,
 var angularLocalStorage = angular.module('LocalStorageModule', []);
 
 angularLocalStorage.provider('localStorageService', function() {
-
+  if(document.domain !== ('localhost' || 'herokuapp.com')){
+    document.domain = 'gotidy.com';
+  }
   // You should set a prefix to avoid overwriting any local storage variables from the rest of your app
   // e.g. localStorageServiceProvider.setPrefix('yourAppName');
   // With provider you can use config as this:
